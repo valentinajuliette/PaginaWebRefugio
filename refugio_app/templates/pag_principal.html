@@ -1,0 +1,69 @@
+<!-- DESCRIPCIÓN DEL PROYECTO:
+            Refugio Dhermes es una fundación que trabaja hace 19 años por la misión
+resguardar a perritos abandonados y vulnerables que buscan un hogar. Actualmente todos sus procesos de gestión
+se realizan de manera análoga, principalmente la visibilización de los perritos del refugio que buscan un hogar.
+Actualmente ese proceso se realiza mediante publicaciones periódicas en instagram, lo que no permite una
+visibilización equitativa de todos los perritos ni de detalles importantes sobre ellos (como su edad, tamaño, o
+personalidad). Además, los links para realizar donaciones seguras al refugio o postular al voluntariado, son de
+difícil acceso y mantienen una fragmentación de la información al no tener un único punto que congregue todo.
+
+Esta página web la creé como prototipo propuesta para el ramo de Responsabilidad Social Empresarial❤
+
+--Valentina Muñoz Rabanal.
+
+ESTRUCTURA DE LA WEB:
+    1.1. Página Principal: Con una breve descripción del refugio, un menú de navegación y link a las secciones
+    destacadas.   -->
+
+{% extends 'base.html' %}
+
+{% block title %}Refugio Dhermes - Página Principal{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<!-- Main Content -->
+<div class="container" style="background-color: #FCFEFD;">
+    <div class="row margin-left margin-right">
+        <div class="col-8">
+            <br>
+            <h1>Encuentra a tu compañero perfecto con nosotros: <span class="text-info">#EligeAdoptar</span></h1>
+            <p><strong>Refugio Dhermes</strong> es una fundación que trabaja hace 19 años por la misión
+                resguardar a perritos abandonados y vulnerables que buscan un hogar. Si estás en búsqueda
+                de un compañero de vida leal... <strong>estás en el lugar correcto ❤</strong></p>
+            <!-- Statistics Section -->
+            <div class="row text-center mt-4">
+                <div class="col col-sm">
+                    <h2>150+</h2>
+                    <p>Perritos</p>
+                </div>
+                <div class="col col-sm">
+                    <h2>19+</h2>
+                    <p>Años de trabajo</p>
+                </div>
+                <div class="col col-sm">
+                    <h2>30+</h2>
+                    <p>Socios donadores</p>
+                </div>
+            </div>
+            <span><br></span>
+            <div class="row">
+                <a class="btn btn-info" href="catalogo/" role="button">Revisa a todos los peludos que buscan hogar</a>
+            </div>
+            <div>
+                <p class="text-center">ó</p>
+            </div>
+            <div class="row text-center">
+                <a href="register" class="btn btn-dark">Házte socio, y empieza a donar HOY ❤</a>
+            </div>
+        </div>
+        <div class="col">
+            <!-- Causes Section -->
+            <div class="row justify-content-center mt-4">
+                <img src="{% static 'img/principal.png' %}" alt="Imagen sobre causas sociales" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+<!-- ESTRUCTURA DE LA WEB:
+    1.2. Catálogo de perritos: Página que muestre los perritos que están en adopción, con una galería de imágenes
+    basada en cards de Bootstrap. -->
+<!-- Archivo HTML para mostrar los perritos en un formato amigable. -->
+
+{% extends 'base.html' %}
+
+{% block title %}Catálogo de Perritos{% endblock %}
+
+{% block content %}
+
+<!-- TÍTULO -->
+<div id="titulo" class="container-fluid" style="background-color: #07c8cc;">
+    <br>
+    <h1 class="text-center" style="color: #FFFFFF;">Catálogo de Perritos</h1>
+    <br>
+</div>
+
+<!-- Galería de perritos -->
+<div class="container">
+    <!-- Mostrar una lista de perritos con imágenes y descripciones breves. -->
+    <div class="row justify-content-center">
+        {% for perrito in perritos %}
+            <div class="col-md-3 margen">
+                <div class="card">
+                    <!-- Imagen del perrito -->
+                    <img src="{{ perrito.imagen.url }}" class="card-img-top" alt="{{ perrito.nombre }}" style="width:70%">
+                    
+                    <!-- Detalles del perrito -->
+                    <div class="card-body">
+                        <h5 class="card-title">{{ perrito.nombre }}</h5>
+                        <p class="card-text">{{ perrito.descripcion|truncatechars:200}}</p>
+                        <p class="card-text">Edad: {{ perrito.años }} años</p>
+                        <p class="card-text">Tamaño: {{ perrito.tamaño }}</p>
+                        <!-- Botón que abre el modal -->
+                        <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#perritoModal{{ perrito.id }}">
+                            Ver más
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            
+            <!-- Modal -->
+            <div class="modal fade" id="perritoModal{{ perrito.id }}" tabindex="-1" aria-labelledby="perritoModalLabel{{ perrito.id }}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="perritoModalLabel{{ perrito.id }}">{{ perrito.nombre }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col">
+                                    <p>{{ perrito.descripcion }}</p>
+                                </div>
+                                <div class="col">
+                                    <img src="{{ perrito.imagen.url }}" class="card-img-top" alt="{{ perrito.nombre }}" style="width:100%">
+                                    <p><br>Edad: {{ perrito.años }} años</p>
+                                    <p>Tamaño: {{ perrito.tamaño }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Crear una nueva fila después de cada 3 perritos -->
+            {% if forloop.counter|divisibleby:3 %}
+                </div><div class="row justify-content-center">
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

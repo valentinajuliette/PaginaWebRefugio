@@ -1,0 +1,46 @@
+<!-- Este archivo contendrá la estructura básica (como el menú de navegación) que será compartida
+entre todas las páginas. -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Refugio Dhermes{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+
+<body>
+    <!-- BARRA DE MENÚ -->
+    <nav id="menu" class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">
+        <div class="container margin-left margin-right">
+            <a class="navbar-brand" href="{% url 'pag_principal' %}">
+                <img id="logo" src="{% static 'img/logo_refugio.png' %}" alt="logo de Refugio Dhermes" class="img-fluid" style="width: 80px;">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pag_principal' %}">Página Principal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'lista_perritos' %}">Perritos en adopción</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://refugiodhermes.trytoku.com/forms/registro?fbclid=PAZXh0bgNhZW0CMTEAAaYL3SgwFFXi0m2EcfDS2nT5GIA9eI448KkoCzR8ZhSxoAYTeprJQ-gSXxc_aem_x6QIRCk-8G7cVO-RyJ7BQQ ">Haz una donación</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-dark" href="https://docs.google.com/forms/d/e/1FAIpQLSeYWDz8wNDe4PYnVsy69IJCHdyWh8eFuVT5QG81l3UFAPxAgg/viewform">¡Únete como voluntari@!</a>
+                    </li>               
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
